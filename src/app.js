@@ -5,10 +5,13 @@ const authRoute = require("./routes/auth.routes");
 const userRoute = require("./routes/user.routes");
 const postRoute = require("./routes/posts.routes");
 const db = require("./models");
+const docs = require('./docs');
+const swaggerUI = require("swagger-ui-express");
 const Role = db.role;
 dotenv.config();
 
 const app = express();
+app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(docs));
 
 var corsOptions = {
   origin: "http://localhost:4200",
